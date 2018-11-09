@@ -16,4 +16,5 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 RUN apt-get -y install golang-go
 
 # Installing necessary npm packages
-RUN npm i -g gulp polymer-cli
+RUN npm -g config set user root
+RUN npm -g i gulp polymer-cli
