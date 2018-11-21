@@ -17,4 +17,4 @@ RUN apt-get -y install golang-go
 
 # Installing necessary npm packages
 RUN npm -g config set user root
-RUN npm -g i gulp@next polymer-cli yarn
+RUN npm -g i polymer-cli yarn
