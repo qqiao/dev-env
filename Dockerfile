@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:rolling
 
 # Install Google Cloud SDK
 RUN apt-get -y update && apt-get -y dist-upgrade && \
