@@ -1,4 +1,4 @@
-FROM ubuntu:rolling
+FROM golang:latest
 
 # Install Google Cloud SDK
 RUN apt-get -y update && apt-get -y dist-upgrade && \
@@ -9,7 +9,7 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
     apt-get -y update && apt-get -y install google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator
 
 # Install Node
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get -y install nodejs
 
 # Getting Go
