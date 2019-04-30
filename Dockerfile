@@ -12,9 +12,6 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get -y install nodejs
 
-# Getting Go
-RUN apt-get -y install golang-go
-
 # Installing necessary npm packages
 RUN npm -g config set user root
 RUN npm -g i polymer-cli yarn
