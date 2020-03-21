@@ -9,8 +9,6 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # Install Google Cloud SDK
 RUN curl https://sdk.cloud.google.com > install.sh
 RUN bash install.sh --disable-prompts
-RUN source google-cloud-sdk/path.bash.inc
-RUN source google-cloud-sdk/completion.bash.inc
 ENV PATH=${PATH}:google-cloud-sdk/bin:/usr/local/go/bin
 RUN gcloud components update && gcloud components install app-engine-go && \
     gcloud components install cloud-datastore-emulator
