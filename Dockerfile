@@ -1,17 +1,21 @@
 FROM golang:latest
 
-# Install Google Cloud SDK
+# Update packages
 RUN apt-get -y update && apt-get -y dist-upgrade && \
-    apt-get -y install lsb-release curl gnupg build-essential git apt-utils apt-transport-https
-RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
-    echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
-    apt-get -y update && apt-get -y install google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator
+    apt-get -y install curl gnupg build-essential git less nano
 
-# Install Node
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt-get -y install nodejs
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-# Installing necessary npm packages
-RUN npm -g config set user root
-RUN npm -g i polymer-cli yarn
+# Install Google Cloud SDK
+RUN curl https://sdk.cloud.google.com > install.sh
+RUN bash install.sh --disable-prompts
+RUN source google-cloud-sdk/path.bash.inc
+RUN source google-cloud-sdk/completion.bash.inc
+ENV PATH=${PATH}:google-cloud-sdk/bin:/usr/local/go/bin
+RUN gcloud components update && gcloud components install app-engine-go && \
+    gcloud components install cloud-datastore-emulator
+RUN rm install.sh
+
+# Install nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+RUN . .nvm/nvm.sh && nvm install v13 && npm -g config set user root && npm i -g yarn firebase-tools
