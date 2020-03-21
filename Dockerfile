@@ -16,4 +16,4 @@ RUN rm install.sh
 
 # Install nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-RUN . .nvm/nvm.sh && nvm install v13 && npm -g config set user root && npm i -g yarn firebase-tools
+RUN . /root/.nvm/nvm.sh && nvm install v13 && npm -g config set user root && npm i -g yarn firebase-tools
