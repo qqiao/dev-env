@@ -2,7 +2,7 @@ FROM golang:latest
 
 # Update packages
 RUN apt-get -y update && apt-get -y dist-upgrade && \
-    apt-get -y install curl gnupg build-essential git less nano
+    apt-get -y install curl gnupg build-essential git less nano default-jdk
 
 # Install Google Cloud SDK
 RUN curl https://sdk.cloud.google.com > install.sh
