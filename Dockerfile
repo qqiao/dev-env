@@ -18,4 +18,8 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - && \
 
 # Installing necessary npm packages
 RUN npm -g config set user root
+
+# Always update NPM just in case the bundled version of NPM is somehow
+# outdated
+RUN npm -g i npm
 RUN npm -g i yarn firebase-tools
