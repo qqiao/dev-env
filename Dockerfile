@@ -13,7 +13,7 @@ RUN gcloud components update && gcloud components install app-engine-go && \
 RUN rm install.sh
 
 # Install Node
-RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get -y install nodejs
 
 # Installing necessary npm packages
