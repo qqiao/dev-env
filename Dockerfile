@@ -12,11 +12,10 @@ RUN curl https://sdk.cloud.google.com > install.sh && \
     gcloud components install cloud-datastore-emulator && rm install.sh
 
 # Install Node
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get -y install nodejs
 
 # Installing necessary npm packages
 # Always update NPM just in case the bundled version of NPM is somehow
 # outdated
-RUN npm -g i npm && npm i -g npm && npm -g config set user root && \
-    npm -g i yarn firebase-tools
+RUN npm -g i npm && npm i -g npm && npm -g i yarn firebase-tools
