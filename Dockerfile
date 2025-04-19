@@ -12,7 +12,7 @@ RUN curl https://sdk.cloud.google.com > install.sh && \
     gcloud components install cloud-datastore-emulator && rm install.sh
 
 # Install Node
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get -y install nodejs
 
 # Installing necessary npm packages
